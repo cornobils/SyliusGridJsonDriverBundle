@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Doctorx32\SyliusGridJsonDriverBundle\Json;
+
+
+use Sylius\Component\Grid\Data\DataSourceInterface;
+use Sylius\Component\Grid\Data\DriverInterface;
+use Sylius\Component\Grid\Parameters;
+
+final class Driver implements DriverInterface
+{
+    public const NAME = 'json';
+
+    public function getDataSource(array $configuration, Parameters $parameters): DataSourceInterface {
+        if (!array_key_exists('url', $configuration)) {
+            throw new \InvalidArgumentException('"url" must be configured.');
+        }
+        if (!array_key_exists('host', $configuration)) {
+            throw new \InvalidArgumentException('"host" must be configured.');
+        }
+        return new DataSource($configuration);
+    }
+
+
+}

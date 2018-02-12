@@ -1,0 +1,15 @@
+{
+    "name": "doctorx32/sylius-grid-json-driver-bundle",
+    "description": "Driver that parses input JSON data for displaying it in Sylius grids",
+    "type": "symfony-bundle",
+    "require": {
+        "sylius/grid-bundle": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Chornobyl",
+            "email": "dch@inbox.lv"
+        }
+    ]
+}
