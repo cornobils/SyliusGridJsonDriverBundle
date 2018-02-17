@@ -12,6 +12,7 @@
             "email": "dch@inbox.lv"
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Sylius\\Bundle\\GridBundle\\Driver\\Json\\": ""
