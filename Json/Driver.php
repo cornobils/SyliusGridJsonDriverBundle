@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Doctorx32\SyliusGridJsonDriverBundle\Json;
-
+namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
 use Sylius\Component\Grid\Data\DataSourceInterface;
 use Sylius\Component\Grid\Data\DriverInterface;
@@ -13,7 +12,8 @@ final class Driver implements DriverInterface
 {
     public const NAME = 'json';
 
-    public function getDataSource(array $configuration, Parameters $parameters): DataSourceInterface {
+    public function getDataSource(array $configuration, Parameters $parameters): DataSourceInterface
+    {
         if (!array_key_exists('url', $configuration)) {
             throw new \InvalidArgumentException('"url" must be configured.');
         }

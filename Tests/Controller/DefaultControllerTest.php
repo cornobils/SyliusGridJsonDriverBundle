@@ -1,6 +1,8 @@
 <?php
 
-namespace doctorx32\SyliusGridJsonDriverBundle\Tests\Controller;
+declare(strict_types=1);
+
+namespace Sylius\Bundle\GridBundle\Driver\Json\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

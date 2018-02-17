@@ -1,6 +1,8 @@
 <?php
 
-namespace doctorx32\SyliusGridJsonDriverBundle\DependencyInjection;
+declare(strict_types=1);
+
+namespace Sylius\Bundle\GridBundle\Driver\Json\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

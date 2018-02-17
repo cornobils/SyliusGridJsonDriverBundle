@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Doctorx32\SyliusGridJsonDriverBundle\Json;
+namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
 use Pagerfanta\Pagerfanta;
 use Sylius\Component\Grid\Data\DataSourceInterface;

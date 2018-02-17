@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Doctorx32\SyliusGridJsonDriverBundle\Json;
+namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
 
 use Pagerfanta\Adapter\ArrayAdapter;
@@ -23,7 +23,7 @@ final class JsonAdapter extends ArrayAdapter
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);  # connection timeout 2 seconds
         curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); # -L key
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); # curl -L key
         $response = curl_exec($ch);
 
         $res = json_decode($response, true);

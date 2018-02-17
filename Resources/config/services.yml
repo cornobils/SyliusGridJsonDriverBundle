@@ -1,7 +1,4 @@
 services:
-#    sylius_grid_json_driver.example:
-#        class: doctorx32\SyliusGridJsonDriverBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-    Doctorx32\SyliusGridJsonDriverBundle\Json\Driver:
+    Sylius\Bundle\GridBundle\Driver\Json\Json\Driver:
         tags:
             - { name: "sylius.grid_driver", alias: "json" }

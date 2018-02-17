@@ -1,6 +1,6 @@
 <?php
 
-namespace Doctorx32\SyliusGridJsonDriverBundle;
+namespace Sylius\Bundle\GridBundle\Driver\Json;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

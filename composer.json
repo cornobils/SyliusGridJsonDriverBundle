@@ -11,5 +11,11 @@
             "name": "Dmitry Chornobyl",
             "email": "dch@inbox.lv"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Sylius\\Bundle\\GridBundle\\Driver\\Json\\": ""
+        },
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+    }
 }
