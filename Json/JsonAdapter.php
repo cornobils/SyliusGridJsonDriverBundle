@@ -6,6 +6,7 @@ namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
 
 use Pagerfanta\Adapter\AdapterInterface;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 final class JsonAdapter implements AdapterInterface
 {
@@ -30,6 +31,9 @@ final class JsonAdapter implements AdapterInterface
         $response = curl_exec($ch);
         $res = json_decode($response, true);
         curl_close($ch);
+        if ($res === null) {
+            throw new ServiceUnavailableHttpException();
+        }
         $this->array = $res;
     }
 

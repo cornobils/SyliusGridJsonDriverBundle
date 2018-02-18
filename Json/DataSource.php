@@ -19,15 +19,24 @@ final class DataSource implements DataSourceInterface
     /** @var QueryBuilder */
     private $queryBuilder;
 
-    public function __construct(array $configuration) {
-        $this->expressionBuilder = new ExpressionBuilder();
+    public function __construct(array $configuration)
+    {
         $this->queryBuilder = new QueryBuilder($configuration['host'], $configuration['url']);
+        $this->expressionBuilder = new ExpressionBuilder($this->queryBuilder);
     }
 
     public function restrict($expression, string $condition = self::CONDITION_AND): void
     {
         // works only AND condition
-        $this->queryBuilder->addFilter($expression);
+
+        switch ($condition) {
+            case DataSourceInterface::CONDITION_AND:
+                $this->queryBuilder->addFilter($expression);
+                break;
+            case DataSourceInterface::CONDITION_OR:
+                $this->queryBuilder->orWhere($expression);
+                break;
+        }
     }
 
     public function getExpressionBuilder(): ExpressionBuilderInterface

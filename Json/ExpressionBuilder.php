@@ -6,10 +6,21 @@ namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
 
 use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Intl\Exception\NotImplementedException;
+use Sylius\Bundle\GridBundle\Driver\Json\Json\QueryBuilder;
 
 final class ExpressionBuilder implements ExpressionBuilderInterface
 {
+    /** @var QueryBuilder */
+    private $queryBuilder;
+
+    public function __construct(QueryBuilder $queryBuilder)
+    {
+        $this->queryBuilder = $queryBuilder;
+    }
+
+
     public function andX(...$expressions) {
         throw new NotImplementedException("not impl");
     }
@@ -72,11 +83,11 @@ final class ExpressionBuilder implements ExpressionBuilderInterface
     }
 
     public function orderBy(string $field, string $direction) {
-        throw new NotImplementedException("not impl");
+        throw new Exception();
     }
 
     public function addOrderBy(string $field, string $direction) {
-        throw new NotImplementedException("not impl");
+        $this->queryBuilder->addFilter("sorting%5B" . $field . "%5D=" . $direction);
     }
 
 }
