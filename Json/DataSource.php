@@ -40,7 +40,8 @@ final class DataSource implements DataSourceInterface
         $adapter = new JsonAdapter($this->queryBuilder);
         $paginator = new Pagerfanta($adapter);
         $paginator->setNormalizeOutOfRangePages(true);
-//        $paginator->setCurrentPage('page', 1); # not working yet, throwing exception
+        $paginator->setAllowOutOfRangePages(true);
+        $paginator->setCurrentPage($parameters->get('page', 1));
         return $paginator;
     }
 }

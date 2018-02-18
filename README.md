@@ -42,3 +42,4 @@ This bundle adds json driver to SyliusGridBundle, which helps get data from spec
                   search:
                       type: string
   ```
+  4. on the specified url side should be Sylius Grid api response, which contains fields and filters with same names as in step 3. 
