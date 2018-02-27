@@ -31,8 +31,11 @@ final class JsonAdapter implements AdapterInterface
         $response = curl_exec($ch);
         $res = json_decode($response, true);
         curl_close($ch);
-        if ($res === null) {
+        if (empty($res)) {
             throw new ServiceUnavailableHttpException();
+        }
+        if (array_key_exists('code', $res)) {
+            throw new ServiceUnavailableHttpException(null, 'On server side: '. $res['message']);
         }
         $this->array = $res;
     }
