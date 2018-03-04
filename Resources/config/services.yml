@@ -1,4 +1,11 @@
 services:
+    Sylius\Bundle\GridBundle\Driver\Json\Json\CurlAdapter:
+        arguments:
+            - [Authorization: "Bearer SampleToken"]
+
     Sylius\Bundle\GridBundle\Driver\Json\Json\Driver:
+        arguments:
+            - '@Sylius\Bundle\GridBundle\Driver\Json\Json\CurlAdapter'
         tags:
             - { name: "sylius.grid_driver", alias: "json" }
+

@@ -14,20 +14,19 @@ final class JsonAdapter implements AdapterInterface
 
     private $array;
 
-    public function __construct(QueryBuilder $queryBuilder)
+    /** @var CurlAdapterInterface */
+    private $curlAdapter;
+
+    public function __construct(QueryBuilder $queryBuilder, CurlAdapterInterface $curlAdapter)
     {
         $this->url = (string) $queryBuilder;
+        $this->curlAdapter = $curlAdapter;
     }
 
     public function createCurl()
     {
-        $ch = curl_init();
+        $ch = $this->curlAdapter->prepareCurl();
         curl_setopt($ch, CURLOPT_URL, $this->url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-type: application/json', 'Authorization: Bearer SampleToken']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);  # connection timeout 2 seconds
-        curl_setopt($ch, CURLOPT_VERBOSE, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); # curl -L key
         $response = curl_exec($ch);
         $res = json_decode($response, true);
         curl_close($ch);

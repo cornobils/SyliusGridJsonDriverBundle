@@ -12,6 +12,14 @@ final class Driver implements DriverInterface
 {
     public const NAME = 'json';
 
+    private $curlAdapter;
+
+    public function __construct(CurlAdapterInterface $curlAdapter)
+    {
+        $this->curlAdapter = $curlAdapter;
+    }
+
+
     public function getDataSource(array $configuration, Parameters $parameters): DataSourceInterface
     {
         if (!array_key_exists('url', $configuration)) {
@@ -20,7 +28,7 @@ final class Driver implements DriverInterface
         if (!array_key_exists('host', $configuration)) {
             throw new \InvalidArgumentException('"host" must be configured.');
         }
-        return new DataSource($configuration);
+        return new DataSource($configuration, $this->curlAdapter);
     }
 
 
