@@ -8,7 +8,6 @@ use Pagerfanta\Pagerfanta;
 use Sylius\Component\Grid\Data\DataSourceInterface;
 use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
 use Sylius\Component\Grid\Parameters;
-use Sylius\Bundle\GridBundle\Driver\Json\Json\CurlAdapterInterface;
 
 final class DataSource implements DataSourceInterface
 {
@@ -25,7 +24,11 @@ final class DataSource implements DataSourceInterface
 
     public function __construct(array $configuration, CurlAdapterInterface $curlAdapter)
     {
-        $this->queryBuilder = new QueryBuilder($configuration['host'], $configuration['url']);
+        if ($configuration['route'] !== null) {
+            $this->queryBuilder = new QueryBuilder($configuration['route'], "");
+        } else {
+            $this->queryBuilder = new QueryBuilder($configuration['host'], $configuration['url']);
+        }
         $this->expressionBuilder = new ExpressionBuilder($this->queryBuilder);
         $this->curlAdapter = $curlAdapter;
     }

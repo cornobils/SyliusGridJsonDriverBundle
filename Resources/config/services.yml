@@ -6,6 +6,7 @@ services:
     Sylius\Bundle\GridBundle\Driver\Json\Json\Driver:
         arguments:
             - '@Sylius\Bundle\GridBundle\Driver\Json\Json\CurlAdapter'
+            - "@router"
         tags:
             - { name: "sylius.grid_driver", alias: "json" }
 
