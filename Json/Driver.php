@@ -35,10 +35,16 @@ final class Driver implements DriverInterface
                 throw new \InvalidArgumentException('"host" must be configured.');
             }
         } else {
-            $configuration['route'] = $this->router->generate($configuration['route'], [], UrlGeneratorInterface::ABSOLUTE_URL);
+            $arguments = isset($configuration['arguments']) ?$configuration['arguments'] : [];
+            $arr = [];
+
+            foreach ($arguments as $argument)
+            {
+                $arr = array_merge($arr, $argument);
+            }
+
+            $configuration['route'] = $this->router->generate($configuration['route'], $arr, UrlGeneratorInterface::ABSOLUTE_URL);
         }
         return new DataSource($configuration, $this->curlAdapter);
     }
-
-
 }
