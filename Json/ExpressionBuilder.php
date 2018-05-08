@@ -75,7 +75,7 @@ final class ExpressionBuilder implements ExpressionBuilderInterface
 
     public function like(string $field, string $pattern) {
         # filtering doesnt work with not escaped ][ symbols
-        return "&criteria%5B" . $field . "%5D%5Btype%5D=contains&criteria%5B" . $field . "%5D%5Bvalue%5D=". $pattern;
+        return "&criteria%5B" . $field . "%5D%5Btype%5D=contains&criteria%5B" . $field . "%5D%5Bvalue%5D=". urlencode($pattern);
     }
 
     public function notLike(string $field, string $pattern) {
