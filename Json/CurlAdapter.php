@@ -7,7 +7,9 @@ namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
 final class CurlAdapter implements CurlAdapterInterface
 {
-    /** @var array */
+    /**
+    * @var array
+     */
     private $headers;
 
     public function __construct(array $headers)
@@ -26,7 +28,7 @@ final class CurlAdapter implements CurlAdapterInterface
         //curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);  # connection timeout 2 seconds
         curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); # curl -L key
+
         return $ch;
     }
-
 }

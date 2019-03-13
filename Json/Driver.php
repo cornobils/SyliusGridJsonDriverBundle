@@ -12,10 +12,16 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class Driver implements DriverInterface
 {
-    public const NAME = 'json';
+    const NAME = 'json';
 
+    /**
+     * @var CurlAdapterInterface
+     */
     private $curlAdapter;
 
+    /**
+     * @var RouterInterface
+     */
     private $router;
 
     public function __construct(CurlAdapterInterface $curlAdapter, RouterInterface $router)

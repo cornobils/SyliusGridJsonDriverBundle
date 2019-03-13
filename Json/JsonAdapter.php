@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
-
 use Pagerfanta\Adapter\AdapterInterface;
 use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 

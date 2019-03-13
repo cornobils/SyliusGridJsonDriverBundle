@@ -16,10 +16,14 @@ final class DataSource implements DataSourceInterface
      */
     private $expressionBuilder;
 
-    /** @var QueryBuilder */
+    /**
+    * @var QueryBuilder
+     */
     private $queryBuilder;
 
-    /** @var  */
+    /**
+    * @var CurlAdapterInterface
+     */
     private $curlAdapter;
 
     public function __construct(array $configuration, CurlAdapterInterface $curlAdapter)
@@ -59,6 +63,7 @@ final class DataSource implements DataSourceInterface
         $paginator->setNormalizeOutOfRangePages(true);
         $paginator->setAllowOutOfRangePages(true);
         $paginator->setCurrentPage($parameters->get('page', 1));
+
         return $paginator;
     }
 }

@@ -3,7 +3,10 @@
     "description": "Driver that parses input JSON data for displaying it in Sylius grids",
     "type": "symfony-bundle",
     "require": {
-        "sylius/grid-bundle": "^1.0"
+        "sylius/grid-bundle": "^1.0",
+        "php": "^7.0",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "license": "MIT",
     "authors": [

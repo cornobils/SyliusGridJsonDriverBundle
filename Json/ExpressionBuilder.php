@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Sylius\Bundle\GridBundle\Driver\Json\Json;
 
-
 use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Intl\Exception\NotImplementedException;
-use Sylius\Bundle\GridBundle\Driver\Json\Json\QueryBuilder;
 
 final class ExpressionBuilder implements ExpressionBuilderInterface
 {
-    /** @var QueryBuilder */
+    /**
+    * @var QueryBuilder
+     */
     private $queryBuilder;
 
     public function __construct(QueryBuilder $queryBuilder)
@@ -89,5 +89,4 @@ final class ExpressionBuilder implements ExpressionBuilderInterface
     public function addOrderBy(string $field, string $direction) {
         $this->queryBuilder->addFilter("&sorting%5B" . $field . "%5D=" . $direction);
     }
-
 }
